@@ -15,8 +15,8 @@ struct Student {
 };
 
 //使用 Call by Address (傳址呼叫)
-void updateMath(Student *s) { //將s改成*s，*s代表s是一個指標，用來儲存外部傳入的記憶體地址 
- s->math = 100; //因為 s 是指標(地址)，不能直接用點(.)，必須用 ->來存取記憶體地址內部的成員 
+void updateMath(Student *s) { //將s改成*s，*s代表s是一個指標，用來儲存外部傳入的記憶體位址
+ s->math = 100; //因為 s 是指標(位址)，不能直接用點(.)，必須用 ->來存取記憶體位址內部的成員 
 }
  
 void printStudent(Student s) {
@@ -40,9 +40,9 @@ int main()
  one.science = 91;
  
  //呼叫時加上取址符號 (&) 
- updateMath(&one); //把變數 one 在記憶體中的實際地址傳給函數 
+ updateMath(&one); //把變數 one 在記憶體中的實際位址傳給函數 
  
- //列印出結果，且此時的 one.math已在記憶體地址被修改成 100 
+ //列印出結果，且此時的 one.math已在記憶體位址被修改成 100 
  printStudent(one);
  return 0;
 }
