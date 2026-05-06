@@ -73,8 +73,8 @@ private:
    node->right = deleteNode(node->right, val); // 刪除後，因為右子樹的根節點可能會變動，所以要重新賦值給 node->right
   }
   else {
-  // 第三步，找到目標節點，並執行刪除 
-  // 此時 val == node->data，這是要刪除的節點 
+   // 第三步，找到目標節點，並執行刪除 
+   // 此時 val == node->data，這是要刪除的節點 
   
    // 情況一、二:節點只有一個子節點或是葉子節點
    // 如果左邊沒人，就直接把右邊的子樹提拔上來
@@ -93,12 +93,11 @@ private:
    // 情況三:節點有兩個子節點 
    // 為了不破壞結構， 需要找合適的繼承者來頂替目前的位置 
    // 須尋找最接近目前節點但又比他大的數值，從右子樹找尋最小的節點 
-   TreeNode* temp = findMin(node->right);
+   TreeNode* temp = findMin(node->right); // 呼叫 findMin 找到右子樹的最小值節點 
 
-   // 將繼承者的數值複製到當前節點
-   node->data = temp->data;
+   node->data = temp->data; // 將繼承者的數值複製到當前節點
 
-   // 在右子樹中刪除那個已經被「挪上來」的繼承者節點
+   // 透過遞迴，刪除右子樹中被複製過來的節點 
    node->right = deleteNode(node->right, temp->data);
   }
   return node; // 回傳更新後的子樹根節點
